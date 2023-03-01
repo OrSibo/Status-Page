@@ -2,6 +2,9 @@ import importlib
 import os
 import sys
 import platform
+import secrets
+
+charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*(-_=+)'
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -30,7 +33,7 @@ except ModuleNotFoundError as e:
             f"in the STATUS_PAGE_CONFIGURATION environment variable."
         )
     raise
-
+'SECRET_KEY' == print(''.join(secrets.choice(charset) for _ in range(50)))
 for parameter in ['ALLOWED_HOSTS', 'DATABASE', 'SECRET_KEY', 'REDIS', 'SITE_URL']:
     if not hasattr(configuration, parameter):
         raise ImproperlyConfigured(f"Required parameter {parameter} is missing from configuration.")
