@@ -17,14 +17,15 @@ DATABASE = {
     'HOST': 'localhost',      # Database server
     'PORT': '',               # Database port (leave blank for default)
     'CONN_MAX_AGE': 300,      # Max database connection age
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
 }
 
 # Redis database settings. Redis is used for caching and for queuing background tasks. A separate configuration exists
 # for each. Full connection details are required.
 REDIS = {
     'tasks': {
-        'HOST': 'localhost',
-        'PORT': 6379,
+        'HOST': 'redis.aanhbc.ng.0001.use1.cache.amazonaws.com',
+        'PORT': '6379',
         # Comment out `HOST` and `PORT` lines and uncomment the following if using Redis Sentinel
         # 'SENTINELS': [('mysentinel.redis.example.com', 6379)],
         # 'SENTINEL_SERVICE': 'status-page',
@@ -36,8 +37,8 @@ REDIS = {
         # 'INSECURE_SKIP_TLS_VERIFY': False,
     },
     'caching': {
-        'HOST': 'localhost',
-        'PORT': 6379,
+        'HOST': 'redis.aanhbc.ng.0001.use1.cache.amazonaws.com',
+        'PORT': '6379',
         # Comment out `HOST` and `PORT` lines and uncomment the following if using Redis Sentinel
         # 'SENTINELS': [('mysentinel.redis.example.com', 6379)],
         # 'SENTINEL_SERVICE': 'netbox',
