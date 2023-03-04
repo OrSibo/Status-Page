@@ -24,7 +24,7 @@ DATABASE = {
 # for each. Full connection details are required.
 REDIS = {
     'tasks': {
-        'HOST': 'redis.aanhbc.ng.0001.use1.cache.amazonaws.com',
+        'HOST': 'lastredisforproject.t7kwfi.ng.0001.euw1.cache.amazonaws.com',
         'PORT': '6379',
         # Comment out `HOST` and `PORT` lines and uncomment the following if using Redis Sentinel
         # 'SENTINELS': [('mysentinel.redis.example.com', 6379)],
@@ -37,7 +37,7 @@ REDIS = {
         # 'INSECURE_SKIP_TLS_VERIFY': False,
     },
     'caching': {
-        'HOST': 'redis.aanhbc.ng.0001.use1.cache.amazonaws.com',
+        'HOST': 'lastredisforproject.t7kwfi.ng.0001.euw1.cache.amazonaws.com',
         'PORT': '6379',
         # Comment out `HOST` and `PORT` lines and uncomment the following if using Redis Sentinel
         # 'SENTINELS': [('mysentinel.redis.example.com', 6379)],
