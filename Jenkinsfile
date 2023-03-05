@@ -3,7 +3,7 @@ pipneline {
     stages {
           stage('build'){
             steps{
-                sh 'ls'
+                sh 'pwc'
             }
         }
     }
