@@ -8,7 +8,7 @@ pipeline {
       }
     }
     stage('Docker Push'){
-      agent any
+      agent AWS
     steps{
 	   withCredentials([certificate(credentialsId: 'aws-cli-use', defaultRegion: 'us-east-1')]){ 
           sh 'aws ecr-public get-login-password --region eu-west-1 | docker login --username AWS --password-stdin public.ecr.aws/f7b5d0k8'
