@@ -12,9 +12,7 @@ pipeline {
     stage('Docker Push'){
       agent any
       steps{
-	   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        AWS("--region=eu-west-1 s3 ls")
-            }  
+	  withAwsCli(credentialsId: 'aws-cli-use', defaultRegion: 'us-east-1']) 
           sh 'aws ecr-public get-login-password --region eu-west-1 | docker login --username AWS --password-stdin public.ecr.aws/f7b5d0k8'
           sh 'docker tag finalprojectorandhila:latest public.ecr.aws/f7b5d0k8/finalprojectorandhila:latest'
           sh 'docker push public.ecr.aws/f7b5d0k8/finalprojectorandhila:latest'
