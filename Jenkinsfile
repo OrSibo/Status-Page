@@ -19,9 +19,9 @@ pipeline {
     }   
 
   stage ('Deploy') {
-
+    agent sshagent
     steps{
-        sshagent(credentials : ['ssh-server']) {
+         withCredentials([SSH Username with private key(credentialsId: 'ssh-erver')]){
             sh 'scp deploy.sh ubuntu@3.253.71.184 ~/'
             sh 'ssh ubuntu@3.253.71.184 "chmod +x deploy.sh"'
             sh 'ssh ubuntu@3.253.71.184 ./deploy.ssh'
