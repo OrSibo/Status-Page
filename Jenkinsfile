@@ -20,9 +20,9 @@ pipeline {
       stage('Docker Pull'){
         agent any
       steps{
-        sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa1'
+        sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa'
         echo 'key'
-        sh 'chmod 644 /var/lib/jenkins/.ssh/id_rsa1.pub'
+        sh 'chmod 644 /var/lib/jenkins/.ssh/id_rsa.pub'
         echo 'chmod'
         sh 'scp /var/lib/jenkins/.ssh/id_rsa1.pub ubuntu@3.253.71.184'
         echo 'copy'
