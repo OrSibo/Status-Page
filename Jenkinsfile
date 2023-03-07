@@ -20,9 +20,12 @@ pipeline {
       stage('Docker Pull'){
         agent any
       steps{
-        sh 'ssh-keygen -t rsa'
+        sh 'ssh-keygen'
+        echo 'key'
         sh 'chmod 644 .ssh/id_rsa.pub'
+        echo 'chmod'
         sh 'scp .ssh/id_rsa.pub ubuntu@3.253.71.184'
+        echo 'copy'
         sh 'ssh -i ~/.ssh/id_rsa.pub ubuntu@3.253.71.184'
         withCredentials([aws(credentialsId: 'aws-cli-use', defaultRegion: 'us-east-1')]){ 
           sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/f7b5d0k8'
