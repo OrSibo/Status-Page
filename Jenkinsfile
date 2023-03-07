@@ -20,11 +20,11 @@ pipeline {
       stage('Docker Pull'){
         agent any
       steps{
-        sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa'
+        sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa1'
         echo 'key'
-        sh 'chmod 644 .ssh/id_rsa.pub'
+        sh 'chmod 644 .ssh/id_rsa1.pub'
         echo 'chmod'
-        sh 'scp /var/lib/jenkins/.ssh/id_rsa.pub ubuntu@3.253.71.184'
+        sh 'scp /var/lib/jenkins/.ssh/id_rsa1.pub ubuntu@3.253.71.184'
         echo 'copy'
         sh 'ssh -i ~/.ssh/id_rsa.pub ubuntu@3.253.71.184'
         withCredentials([aws(credentialsId: 'aws-cli-use', defaultRegion: 'us-east-1')]){ 
