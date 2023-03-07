@@ -22,7 +22,7 @@ pipeline {
       steps{
         sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa1'
         echo 'key'
-        sh 'chmod 644 .ssh/id_rsa1.pub'
+        sh 'chmod 644 /var/lib/jenkins/.ssh/id_rsa1.pub'
         echo 'chmod'
         sh 'scp /var/lib/jenkins/.ssh/id_rsa1.pub ubuntu@3.253.71.184'
         echo 'copy'
