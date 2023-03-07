@@ -7,7 +7,7 @@ pipeline {
       	sh 'docker build -t finalprojectorandhila .'
       }
     }
-    stage('Docker Push'){
+        stage('Docker Push'){
       agent any
     steps{
     withCredentials([aws(credentialsId: 'aws-cli-use', defaultRegion: 'us-east-1')]){ 
