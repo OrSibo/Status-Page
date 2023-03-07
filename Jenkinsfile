@@ -24,7 +24,7 @@ pipeline {
         echo 'key'
         sh 'chmod 644 .ssh/id_rsa.pub'
         echo 'chmod'
-        sh 'scp .ssh/id_rsa.pub ubuntu@3.253.71.184'
+        sh 'scp /var/lib/jenkins/.ssh/id_rsa.pub ubuntu@3.253.71.184'
         echo 'copy'
         sh 'ssh -i ~/.ssh/id_rsa.pub ubuntu@3.253.71.184'
         withCredentials([aws(credentialsId: 'aws-cli-use', defaultRegion: 'us-east-1')]){ 
