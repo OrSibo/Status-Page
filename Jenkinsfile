@@ -20,13 +20,14 @@ pipeline {
       stage('Docker Pull'){
         agent any
       steps{
-        sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa6'
+        sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa7'
         echo 'key'
-        sh 'chmod 644 /var/lib/jenkins/.ssh/id_rsa6.pub'
+        sh 'chmod 644 /var/lib/jenkins/.ssh/id_rsa7.pub'
         echo 'chmod'
-        sh 'scp /var/lib/jenkins/.ssh/id_rsa6.pub ubuntu@3.253.71.184:~/.ssh/'
+        sh 'scp /var/lib/jenkins/.ssh/id_rsa7.pub ubuntu@3.253.71.184'
         echo 'copy'
-        sh 'ssh -i ~/.ssh/id_rsa6.pub ubuntu@3.253.71.184'
+        sh 'cat /var/lib/jenkins/.ssh/id_rsa7'
+        sh 'ssh -i ~/.ssh/id_rsa7.pub ubuntu@3.253.71.184'
         withCredentials([aws(credentialsId: 'aws-cli-use', defaultRegion: 'us-east-1')]){ 
           sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/f7b5d0k8'
           sh 'docker pull public.ecr.aws/f7b5d0k8/finalprojectorandhila:latest'}
