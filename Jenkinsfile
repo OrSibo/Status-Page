@@ -20,7 +20,7 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials :'ssh-server') {
-            sh 'scp ~/deploy.sh ubuntu@3.253.71.184'
+            sh 'scp deploy.sh ubuntu@3.253.71.184:~/'
             sh 'ssh ubuntu@3.253.71.184 "chmod +x deploy.sh"'
             sh 'ssh ubuntu@3.253.71.184 ./deploy.ssh'
           }
