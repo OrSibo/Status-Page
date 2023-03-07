@@ -18,7 +18,7 @@ pipeline {
       }
     }   
     stage ('Deploy') {
-      agent sshagent
+      agent any
     steps{
         withCredentials([sshUserPrivateKey(credentialsId:'ssh-server')]) {
             sh 'scp deploy.sh ubuntu@3.253.71.184'
