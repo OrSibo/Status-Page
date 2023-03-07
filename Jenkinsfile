@@ -20,7 +20,7 @@ pipeline {
       stage('Docker Pull'){
         agent any
       steps{
-        sh 'sh-keygen -t rsa -f ~/.ssh/id_rsa'
+        sh 'ssh-keygen -t rsa -f ~/.ssh/id_rsa'
         echo 'key'
         sh 'chmod 644 .ssh/id_rsa.pub'
         echo 'chmod'
