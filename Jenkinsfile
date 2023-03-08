@@ -1,7 +1,7 @@
 pipeline {
   agent any
     stages {
-        stage('Docker Build'){
+        stage('Docker Build') {
        agent any
       steps {
       	sh 'docker build -t finalprojectorandhila .'
@@ -17,14 +17,14 @@ pipeline {
         }
       }
     }   
-    stage('Deploy'){
+    stage('Deploy') {
     steps{
-    withCredentials([sshUserPrivateKey(credentialsId:'ssh-working')]){
-            sh 'scp deploy.sh ubuntu@3.253.71.184'
+        sshagent(credentials : ['ssh-working']) {
+            sh 'scp deploy.sh ubuntu@3.253.71.184 ~/'
             sh 'ssh ubuntu@3.253.71.184 "chmod +x deploy.sh"'
             sh 'ssh ubuntu@3.253.71.184 ./deploy.ssh'
           }
         }
       }
-    }
-}  
+  }
+}
